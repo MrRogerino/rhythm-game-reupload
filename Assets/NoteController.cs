@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class NoteController : MonoBehaviour {
 
+    GameObject playerTrack;
+    AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
-  
+        GameObject playerTrack = GameObject.Find("PlayerTrack");
+        audioSource = playerTrack.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -20,7 +24,13 @@ public class NoteController : MonoBehaviour {
         {
             Debug.Log("note fail");
             Destroy(gameObject);
+            StopMusic();
         }
+    }
+
+    void StopMusic()
+    {
+        audioSource.mute = true;
     }
 
 }
