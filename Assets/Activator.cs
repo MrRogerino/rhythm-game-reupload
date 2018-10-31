@@ -29,7 +29,7 @@ public class Activator : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
         active = true;
-        Debug.Log("note active:" + active);
+        //Debug.Log("note active:" + active);
         if (col.gameObject.CompareTag("Note"))
         {
             note = col.gameObject;
@@ -39,11 +39,12 @@ public class Activator : MonoBehaviour {
     void OnTriggerExit(Collider col)
     {
         active = false;
-        Debug.Log("note active:" + active);
+        //Debug.Log("note active:" + active);
     }
 
     void PlayMusic()
     {
         audioSource.mute = false;
+        Debug.Log("track playing");
     }
 }

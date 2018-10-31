@@ -31,6 +31,7 @@ public class NoteController : MonoBehaviour {
     void StopMusic()
     {
         audioSource.mute = true;
+        Debug.Log("track muted");
     }
 
 }
