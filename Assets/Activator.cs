@@ -8,12 +8,17 @@ public class Activator : MonoBehaviour {
     bool active = false;
     GameObject note;
     GameObject playerTrack;
-    AudioSource audioSource;
+    AudioSource playerAudio;
+    GameObject baseTrack;
+    AudioSource baseAudio;
+    
 
 	// Use this for initialization
 	void Start () {
 	    GameObject playerTrack = GameObject.Find("PlayerTrack");
-        audioSource = playerTrack.GetComponent<AudioSource>();
+        playerAudio = playerTrack.GetComponent<AudioSource>();
+        GameObject baseTrack = GameObject.Find("BaseTrack");
+        baseAudio = baseTrack.GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -44,7 +49,9 @@ public class Activator : MonoBehaviour {
 
     void PlayMusic()
     {
-        audioSource.mute = false;
-        Debug.Log("track playing");
+        playerAudio.mute = false;
+        baseAudio.mute = true;
+        Debug.Log("playerAudio playing" + playerAudio.mute);
+        Debug.Log("base Audio playing" + baseAudio.mute);
     }
 }

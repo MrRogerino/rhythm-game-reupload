@@ -5,16 +5,21 @@ using UnityEngine;
 public class NoteController : MonoBehaviour {
 
     GameObject playerTrack;
-    AudioSource audioSource;
+    AudioSource playerAudio;
+    GameObject baseTrack;
+    AudioSource baseAudio;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         GameObject playerTrack = GameObject.Find("PlayerTrack");
-        audioSource = playerTrack.GetComponent<AudioSource>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        playerAudio = playerTrack.GetComponent<AudioSource>();
+        GameObject baseTrack = GameObject.Find("BaseTrack");
+        baseAudio = baseTrack.GetComponent<AudioSource>();
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
@@ -30,8 +35,10 @@ public class NoteController : MonoBehaviour {
 
     void StopMusic()
     {
-        audioSource.mute = true;
-        Debug.Log("track muted");
+        playerAudio.mute = true;
+        baseAudio.mute = false;
+        Debug.Log("playerAudio playing: " + playerAudio.mute);
+        Debug.Log("base Audio playing: " + baseAudio.mute);
     }
 
 }
