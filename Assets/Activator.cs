@@ -23,9 +23,15 @@ public class Activator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(key))
+        {
+            //play fail sound
+        }
 		if (Input.GetKeyDown(key) && active)
         {
             Destroy(note);
+            //play success sound
+            Debug.Log("note hit");
             PlayMusic();
             active = false;
         }
@@ -51,7 +57,7 @@ public class Activator : MonoBehaviour {
     {
         playerAudio.mute = false;
         baseAudio.mute = true;
-        Debug.Log("playerAudio playing" + playerAudio.mute);
-        Debug.Log("base Audio playing" + baseAudio.mute);
+        //Debug.Log("playerAudio playing" + playerAudio.mute);
+        //Debug.Log("base Audio playing" + baseAudio.mute);
     }
 }

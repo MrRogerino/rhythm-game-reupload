@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class NoteController : MonoBehaviour {
 
     GameObject playerTrack;
@@ -37,8 +38,8 @@ public class NoteController : MonoBehaviour {
     {
         playerAudio.mute = true;
         baseAudio.mute = false;
-        Debug.Log("playerAudio playing: " + playerAudio.mute);
-        Debug.Log("base Audio playing: " + baseAudio.mute);
+        //Debug.Log("playerAudio playing: " + playerAudio.mute);
+        //Debug.Log("base Audio playing: " + baseAudio.mute);
     }
 
 }
