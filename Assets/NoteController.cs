@@ -26,7 +26,7 @@ public class NoteController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("failCollider"))
+        if (other.gameObject.CompareTag("FailCollider"))
         {
             Debug.Log("note fail");
             Destroy(gameObject);
