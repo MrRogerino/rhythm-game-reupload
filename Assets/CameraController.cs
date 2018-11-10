@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         noteBar = GameObject.Find("NoteBar");
-        cameraEffects = GetComponent < CameraShake() >;
+        //cameraEffects = GetComponent < CameraShake() >;
 	}
 
     // Update is called once per frame
