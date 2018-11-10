@@ -8,16 +8,17 @@ public class BarController : MonoBehaviour {
     public Material availableMaterial;
     bool active = false;
     GameObject note;
+    public int movespeed = 2;
 
 	// Use this for initialization
 	void Start () {
         baseMaterial = GetComponent < Renderer >().material;
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetKeyDown(KeyCode.Space))
+        transform.position += Vector3.forward * movespeed * Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space))
         {
            StartCoroutine(Pressed());
         }
@@ -25,18 +26,10 @@ public class BarController : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        active = true;
-        //Debug.Log("note active:" + active);
         if (col.gameObject.CompareTag("Note"))
         {
             StartCoroutine(NoteAvailable());
         }
-    }
-
-    void OnTriggerExit(Collider col)
-    {
-        active = false;
-        //Debug.Log("note active:" + active);
     }
 
     IEnumerator Pressed()
