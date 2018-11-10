@@ -57,7 +57,7 @@ public class Activator : MonoBehaviour {
     {
         playerAudio.mute = false;
         baseAudio.mute = true;
-        //Debug.Log("playerAudio playing" + playerAudio.mute);
-        //Debug.Log("base Audio playing" + baseAudio.mute);
+        Debug.Log("playerAudio playing" + playerAudio.mute);
+        Debug.Log("base Audio playing" + baseAudio.mute);
     }
 }
