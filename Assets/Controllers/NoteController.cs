@@ -10,6 +10,7 @@ public class NoteController : MonoBehaviour {
     GameObject baseTrack;
     AudioSource baseAudio;
     AudioSource failClip;
+    int delay = 1;
 
     // Use this for initialization
     void Start()
@@ -18,7 +19,6 @@ public class NoteController : MonoBehaviour {
         playerAudio = playerTrack.GetComponent<AudioSource>();
         baseTrack = GameObject.Find("BaseTrack");
         baseAudio = baseTrack.GetComponent<AudioSource>();
-        failClip = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,10 +30,9 @@ public class NoteController : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("FailCollider"))
         {
-            failClip.Play(0);
-            Destroy(gameObject);
             StopMusic();
-            Debug.Log("hey");
+            Destroy(gameObject, 1);
+            
         }
     }
 
@@ -41,8 +40,5 @@ public class NoteController : MonoBehaviour {
     {
         playerAudio.mute = true;
         baseAudio.mute = false;
-        //Debug.Log("playerAudio playing: " + playerAudio.mute);
-        //Debug.Log("base Audio playing: " + baseAudio.mute);
     }
-
 }
