@@ -11,6 +11,7 @@ public class Activator : MonoBehaviour {
     AudioSource playerAudio;
     GameObject baseTrack;
     AudioSource baseAudio;
+    AudioSource failClip;
     
 
 	// Use this for initialization
@@ -19,19 +20,18 @@ public class Activator : MonoBehaviour {
         playerAudio = playerTrack.GetComponent<AudioSource>();
         GameObject baseTrack = GameObject.Find("BaseTrack");
         baseAudio = baseTrack.GetComponent<AudioSource>();
+        failClip = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(key))
+        if (Input.GetKeyDown(key) && !active)
         {
-            //play fail sound
+            failClip.Play();
         }
 		if (Input.GetKeyDown(key) && active)
         {
             Destroy(note);
-            //play success sound
-            Debug.Log("note hit");
             PlayMusic();
             active = false;
         }
@@ -40,7 +40,6 @@ public class Activator : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
         active = true;
-        //Debug.Log("note active:" + active);
         if (col.gameObject.CompareTag("Note"))
         {
             note = col.gameObject;
@@ -50,14 +49,11 @@ public class Activator : MonoBehaviour {
     void OnTriggerExit(Collider col)
     {
         active = false;
-        //Debug.Log("note active:" + active);
     }
 
     void PlayMusic()
     {
         playerAudio.mute = false;
         baseAudio.mute = true;
-        Debug.Log("playerAudio playing" + playerAudio.mute);
-        Debug.Log("base Audio playing" + baseAudio.mute);
     }
 }
