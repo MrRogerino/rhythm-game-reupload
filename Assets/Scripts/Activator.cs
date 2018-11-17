@@ -14,6 +14,7 @@ public class Activator : MonoBehaviour {
     GameObject baseTrack;
     AudioSource baseAudio;
     AudioSource failClip;
+    AudioSource successClip;
     GameObject dashboard;
 
 	// Use this for initialization
@@ -22,18 +23,24 @@ public class Activator : MonoBehaviour {
         playerAudio = playerTrack.GetComponent<AudioSource>();
         GameObject baseTrack = GameObject.Find("BaseTrack");
         baseAudio = baseTrack.GetComponent<AudioSource>();
-        failClip = GetComponent<AudioSource>();
+        List<AudioSource> audioclips = new List<AudioSource>();
+        GetComponents(audioclips);
+        failClip = audioclips[0];
+        successClip = audioclips[1];
         dashboard = GameObject.Find("Dashboard");
     }
 	
 	// Update is called once per frame
 	void Update () {
+        // no note available
         if (Input.GetKeyDown(key) && !active)
         {
             failClip.Play();
         }
+        // success event
 		if (Input.GetKeyDown(key) && active)
         {
+            successClip.Play();
             Destroy(note);
             PlayMusic();
             active = false;
