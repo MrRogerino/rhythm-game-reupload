@@ -15,8 +15,6 @@ public class Shake : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider col)
     {
-        Debug.Log("beep");
-        Debug.Log(col.gameObject);
         if (col.gameObject.CompareTag("NoteBar"))
         {
             gameCamera.GetComponent<CameraShake>().ShakeCamera(shakeAmount, shakeDuration);

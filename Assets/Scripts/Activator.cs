@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Activator : MonoBehaviour {
 
     public KeyCode key;
+    public string direction;
     bool active = false;
     GameObject note;
     GameObject playerTrack;
@@ -12,7 +14,7 @@ public class Activator : MonoBehaviour {
     GameObject baseTrack;
     AudioSource baseAudio;
     AudioSource failClip;
-    
+    GameObject dashboard;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +23,7 @@ public class Activator : MonoBehaviour {
         GameObject baseTrack = GameObject.Find("BaseTrack");
         baseAudio = baseTrack.GetComponent<AudioSource>();
         failClip = GetComponent<AudioSource>();
+        dashboard = GameObject.Find("Dashboard");
     }
 	
 	// Update is called once per frame
@@ -42,6 +45,7 @@ public class Activator : MonoBehaviour {
         active = true;
         if (col.gameObject.CompareTag("Note"))
         {
+            dashboard.GetComponent<DashboardDisplay>().ChangeDashboard(direction); 
             note = col.gameObject;
         }
     }
@@ -49,6 +53,7 @@ public class Activator : MonoBehaviour {
     void OnTriggerExit(Collider col)
     {
         active = false;
+        dashboard.GetComponent<DashboardDisplay>().ResetDashboard();
     }
 
     void PlayMusic()
