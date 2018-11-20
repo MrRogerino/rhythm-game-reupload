@@ -10,7 +10,6 @@ public class DashboardDisplay : MonoBehaviour {
     public Sprite leftDashboard;
     public Sprite middleDashboard;
     public Sprite rightDashboard;
-    public enum Direction { left, middle, right }
 
 	// Use this for initialization
 	void Start () {
