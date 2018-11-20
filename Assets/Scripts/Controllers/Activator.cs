@@ -44,6 +44,7 @@ public class Activator : MonoBehaviour {
             Destroy(note);
             PlayMusic();
             active = false;
+            dashboard.GetComponent<DashboardDisplay>().ResetDashboard();
         }
 	}
 
