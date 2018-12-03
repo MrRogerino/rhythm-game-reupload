@@ -14,6 +14,11 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene("Rhythm Game");
     }
 
+    public void ReturnToMain()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
