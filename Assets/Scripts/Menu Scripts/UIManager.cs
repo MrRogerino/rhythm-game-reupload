@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
-	public void PlayGame()
+	public void PlayBaseGame()
     {
         if (Time.timeScale == 0)
         {
@@ -24,6 +24,15 @@ public class UIManager : MonoBehaviour {
     {
         Time.timeScale = 1;
         PlayMusic();
+    }
+
+    public void RestartGame()
+    {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        };
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ReturnToMain()
