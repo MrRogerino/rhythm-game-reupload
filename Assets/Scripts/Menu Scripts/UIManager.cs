@@ -14,6 +14,15 @@ public class UIManager : MonoBehaviour {
         SceneManager.LoadScene("Rhythm Game");
     }
 
+    public void PlayAutoGame()
+    {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+        SceneManager.LoadScene("Auto Play");
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0;
